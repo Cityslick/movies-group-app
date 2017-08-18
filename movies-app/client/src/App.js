@@ -40,7 +40,7 @@ class App extends Component {
         return <Login handleLoginSubmit={this.handleLoginSubmit} />;
         } else return <Home />;
         break;
-      case register:
+      case 'register':
         if (!this.state.auth) {
         return <Register handleRegisterSubmit={this.handleRegisterSubmit} />;
         } else return <Home />;

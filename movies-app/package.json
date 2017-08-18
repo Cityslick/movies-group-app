@@ -16,8 +16,8 @@
     "pg-promise": "^6.5.0"
   },
   "scripts": {
-  "start": "node app.js",
-  "dev": "nodemon app.js",
-  "debugger": "DEBUG=*:* yarn dev"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "debugger": "DEBUG=*:* yarn dev"
   }
 }

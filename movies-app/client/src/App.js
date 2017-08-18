@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios'
+
+import axios from 'axios';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
+
 import Login from './components/Login';
 import Register from './components/Register';
+import MoviesList from './components/MoviesList';
 
 class App extends Component {
   constructor() {
@@ -18,10 +22,23 @@ class App extends Component {
       movieData: null,
     }
     this.setPage = this.setPage.bind(this);
-    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
-    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
-    this.logOut = this.logOut.bind(this);
+    this.handleMovieSubmit = this.handleMovieSubmit.bind(this);
+    this.handleMovieEditSubmit = this.handleMovieEditSubmit.bind(this);
+    this.selectEditedMovie = this.selectEditedMovie.bind(this);
   }
+
+  // LIFECYCLE
+
+  componentDidMount() {
+    axios.get('/movies')
+      .then(res => {
+        this.setState({
+          movieData: res.data.data,
+        });
+      }).catch(err => console.log(err));
+  }
+
+  // PAGINATION
 
   setPage(page) {
     console.log('click');
@@ -33,12 +50,15 @@ class App extends Component {
   decideWhichPage() {
     switch(this.state.currentPage) {
       case 'home':
-        return <Home />
+        return <Home />;
         break;
-      case 'login':
-        if (!this.state.auth) {
-        return <Login handleLoginSubmit={this.handleLoginSubmit} />;
-        } else return <Home />;
+      case 'movies':
+        return (<MoviesList 
+          movieData={this.state.movieData} 
+          handleMovieSubmit={this.handleMovieSubmit} 
+          handleMovieEditSubmit={this.handleMovieEditSubmit}
+          selectEditedMovie={this.selectEditedMovie}
+          currentMovieId={this.state.currentMovieId}  />)
         break;
       case 'register':
         if (!this.state.auth) {
@@ -49,49 +69,47 @@ class App extends Component {
     }
   }
 
-  //Auth
+  // MOVIES
 
-  handleLoginSubmit(e, username, password) {
+  handleMovieSubmit(e, title, description, genre) {
     e.preventDefault();
-    axios.post('/auth/login', {
-      username,
-      password,
+    axios.post('/movies', {
+      title,
+      description,
+      genre,
     }).then(res => {
-      this.setState({
-        auth: res.data.auth,
-        user: res.data.user,
-        currentPage: 'home',
-      });
+      this.resetMovies();
     }).catch(err => console.log(err));
   }
 
-  handleRegisterSubmit(e, username, password, email) {
+  handleMovieEditSubmit(e, title, description, genre) {
     e.preventDefault();
-    axios.post('/auth/register', {
-      username,
-      password,
-      email,
+    axios.put(`/movies/${this.state.currentMovieId}`, {
+      title,
+      description,
+      genre,
     }).then(res => {
-      this.setState({
-        auth: res.data.auth,
-        user: res.data.user,
-        currentPage: 'home',
-      });
+      this.resetMovies();
     }).catch(err => console.log(err));
   }
 
-  logOut() {
-    axios.get('/auth/logout')
+  selectEditedMovie(id) {
+    this.setState({
+      currentMovieId: id,
+    })
+  }
+
+  resetMovies() {
+    axios.get('/movies')
       .then(res => {
-        console.log(res);
         this.setState({
-          auth: false,
-          currentPage: 'home',
-        });
+          movieData: res.data.data,
+          currentMovieId: null,
+        })
       }).catch(err => console.log(err));
   }
 
-  //Render
+  // RENDER
 
   render() {
     return (

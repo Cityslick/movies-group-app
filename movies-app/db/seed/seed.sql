@@ -1,3 +1,5 @@
+\c movies_p3_dev;
+
 
 INSERT INTO movies (title, description, genre) VALUES ( 'Billy Jack Goes to Washington', 'Donec semper sapien a libero.', 'Drama');
 INSERT INTO movies (title, description, genre) VALUES ('Wind Will Carry Us, The (Bad ma ra khahad bord)', 'Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna.', 'Drama');

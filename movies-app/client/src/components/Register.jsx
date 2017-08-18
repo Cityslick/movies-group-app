@@ -24,13 +24,13 @@ class Register extends Component {
             <div>
                 <form onSubmit={(e) => this.props.handleRegisterSumbit(e, this.state.username, this.state.password, this.state.email)}>
                     <input type="text" name="username" value={this.state.username} placeholder="Username" onChange={this.handleInputChange} />
-                    <input type="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
+                    <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
                     <input type="email" name="email" value={this.state.email} placeholder="email" onChange={this.handleInputChange} />
-                    <input type="submit">Register</input>
+                    <input type="submit" value="Submit" />
                 </form>
             </div>
         )
     }
 }
 
-export default Register; 
+export default Register;

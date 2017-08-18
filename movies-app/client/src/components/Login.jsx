@@ -24,7 +24,7 @@ class Login extends Component {
                 <form onSubmit={(e) => this.props.handleLoginSubmit(e, this.state.username, this.state.paswword)}>
                     <input type="text" name="username" value={this.state.username} placeholder="Username" onChange={this.handleInputChange} />
                     <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
-                    <inpput type="submit" value='Log in!' />
+                    <input type="submit" value='Log in!' />
                 </form>
             </div>
         )

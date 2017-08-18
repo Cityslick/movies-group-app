@@ -25,7 +25,51 @@ class App extends Component {
     this.handleMovieSubmit = this.handleMovieSubmit.bind(this);
     this.handleMovieEditSubmit = this.handleMovieEditSubmit.bind(this);
     this.selectEditedMovie = this.selectEditedMovie.bind(this);
+    this.logOut =  this.logOut.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.handleRegisterSubmit= this.handleRegisterSubmit.bind(this);
   }
+
+    handleRegisterSubmit(e, username, password, email) {
+      e.preventDefault();
+      axios.post('/auth/register', {
+        username,
+        password,
+        email,
+      }).then(res => {
+        this.setState({
+          auth: res.data.auth,
+          user: res.data.user,
+          currentPage: 'home',
+        });
+      }).catch(err => console.log(err));
+    }
+
+
+  logOut() {
+    axios.get('/auth/logout')
+      .then(res => {
+        console.log(res);
+        this.setState({
+          auth: false,
+          currentPage: 'home',
+        });
+      }).catch(err => console.log(err));
+  }
+
+  handleLoginSubmit(e, username, password) {
+    e.preventDefault();
+    axios.post('/auth/login', {
+      username,
+      password,
+    }).then(res => {
+      this.setState({
+        auth: res.data.auth,
+        user: res.data.user,
+      });
+    }).catch(err => console.log(err));
+  }
+
 
   // LIFECYCLE
 
@@ -52,15 +96,23 @@ class App extends Component {
       case 'home':
         return <Home />;
         break;
+
+      case 'login':
+        return <Login handleLoginSubmit={this.handleLoginSubmit} />;
+        break;
+
       case 'movies':
-        return (<MoviesList 
-          movieData={this.state.movieData} 
-          handleMovieSubmit={this.handleMovieSubmit} 
+        return (<MoviesList
+          movieData={this.state.movieData}
+          handleMovieSubmit={this.handleMovieSubmit}
           handleMovieEditSubmit={this.handleMovieEditSubmit}
           selectEditedMovie={this.selectEditedMovie}
-          currentMovieId={this.state.currentMovieId}  />)
+          current
+          MovieId={this.state.currentMovieId}  />)
         break;
+
       case 'register':
+        console.log("Im here");
         if (!this.state.auth) {
         return <Register handleRegisterSubmit={this.handleRegisterSubmit} />;
         } else return <Home />;

@@ -30,6 +30,11 @@ class App extends Component {
       case 'home':
         return <Home />
         break;
+      case 'login':
+        return <Login handleLoginSubmit={this.handleLoginSubmit} />;
+        break;
+      case register:
+        return <Register handleRegisterSubmit={this.handleRegisterSubmit} />;
         default:
         break;
     }

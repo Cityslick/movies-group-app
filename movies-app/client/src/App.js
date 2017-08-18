@@ -36,10 +36,14 @@ class App extends Component {
         return <Home />
         break;
       case 'login':
+        if (!this.state.auth) {
         return <Login handleLoginSubmit={this.handleLoginSubmit} />;
+        } else return <Home />;
         break;
       case register:
+        if (!this.state.auth) {
         return <Register handleRegisterSubmit={this.handleRegisterSubmit} />;
+        } else return <Home />;
         default:
         break;
     }

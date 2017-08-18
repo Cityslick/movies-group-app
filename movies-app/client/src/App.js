@@ -92,7 +92,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header setPage={this.setPage} />
+        <Header setPage={this.setPage} logOut={this.logOut} />
         {this.decideWhichPage()}
         <Footer />
       </div>

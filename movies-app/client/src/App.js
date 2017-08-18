@@ -28,7 +28,7 @@ class App extends Component {
     this.selectEditedMovie = this.selectEditedMovie.bind(this);
   }
 
-  // LIFECYCLE
+  //lifescylce
 
   componentDidMount() {
     axios.get('/movies')
@@ -39,7 +39,7 @@ class App extends Component {
       }).catch(err => console.log(err));
   }
 
-  // PAGINATION
+  //pagination
 
   setPage(page) {
     console.log('click');
@@ -66,7 +66,7 @@ class App extends Component {
     }
   }
 
-  // MOVIES
+  //movies
 
   handleMovieSubmit(e, title, description, genre) {
     e.preventDefault();
@@ -106,7 +106,7 @@ class App extends Component {
       }).catch(err => console.log(err));
   }
 
-  // RENDER
+  //render
 
   render() {
     return (

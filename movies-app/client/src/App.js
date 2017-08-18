@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import axios from 'axios'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import Login from './components/Login';
+import Register from './components/Register';
 
 class App extends Component {
   constructor() {
@@ -16,6 +18,8 @@ class App extends Component {
       movieData: null,
     }
     this.setPage = this.setPage.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
   }
 
   setPage(page) {
@@ -50,7 +54,8 @@ class App extends Component {
     }).then(res => {
       this.setState({
         auth: res.data.auth,
-        user: res.data.userm
+        user: res.data.user,
+        currentPage: 'home',
       });
     }).catch(err => console.log(err));
   }

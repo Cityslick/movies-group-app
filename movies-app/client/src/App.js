@@ -20,6 +20,7 @@ class App extends Component {
     this.setPage = this.setPage.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   setPage(page) {
@@ -74,6 +75,19 @@ class App extends Component {
       });
     }).catch(err => console.log(err));
   }
+
+  logOut() {
+    axios.get('/auth/logout')
+      .then(res => {
+        console.log(res);
+        this.setState({
+          auth: false,
+          currentPage: 'home',
+        });
+      }).catch(err => console.log(err));
+  }
+
+  //Render
 
   render() {
     return (

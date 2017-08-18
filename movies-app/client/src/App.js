@@ -35,6 +35,36 @@ class App extends Component {
     }
   }
 
+  //Auth
+
+  handleLoginSubmit(e, username, password) {
+    e.preventDefault();
+    axios.post('/auth/login', {
+      username,
+      password,
+    }).then(res => {
+      this.setState({
+        auth: res.data.auth,
+        user: res.data.userm
+      });
+    }).catch(err => console.log(err));
+  }
+
+  handleRegisterSubmit(e, username, password, email) {
+    e.preventDefault();
+    axios.post('/auth/register', {
+      username,
+      password,
+      email,
+    }).then(res => {
+      this.setState({
+        auth: res.data.auth,
+        user: res.data.user,
+        currentPage: 'home',
+      });
+    }).catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="App">

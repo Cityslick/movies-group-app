@@ -26,19 +26,20 @@ app.use(passport.session());
 
 app.use(express.static('public'));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-    console.logo(`Listening on port ${PORT}`);
+    console.log(`Listening on port ${PORT}`);
 });
 
 // app.get('/', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 // });
 
-// const authRoutes = require('./routes/auth-routes');
-// app.use('/auth', authRoutes);
+const authRoutes = require('./routes/auth-routes');
+app.use('/auth', authRoutes);
 // const movieRoutes = require('./routes/movie-routes');
 // app.use('/movies', movieRoutes);
+
 
 app.use('*', (req, res) => {
   res.status(400).json({

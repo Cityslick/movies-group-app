@@ -37,6 +37,7 @@ app.get('/', (req, res) => {
 
 const authRoutes = require('./routes/auth-routes');
 app.use('/auth', authRoutes);
+
 const movieRoutes = require('./routes/movie-routes');
 app.use('/movies', movieRoutes);
 

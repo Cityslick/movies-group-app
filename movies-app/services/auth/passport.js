@@ -1,18 +1,17 @@
-const passport = require("passport");
-const User  = require("../../models/user");
+const passport = require('passport');
+const User = require('../../models/user');
 
-module.exports = function(){
-    passport.serializeUser(function(user,done){
-        done(null,user.username);
-    })
+module.exports = () => {
+  passport.serializeUser((user, done) => {
+    done(null, user.username);
+  });
 
-    passport.deserializeUser(function(username,done){
-        User.findByUserName(username)
-        .then(user => {
+  passport.deserializeUser((username, done) => {
+    User.findByUserName(username)
+      .then(user => {
         done(null, user);
-        }).catch(err => {
-            done(err, null);
-        });
-    });
-
-}
+      }).catch(err => {
+        done(err, null);
+      });
+  });
+};

@@ -60,7 +60,11 @@ class App extends Component {
           selectEditedMovie={this.selectEditedMovie}
           currentMovieId={this.state.currentMovieId}  />)
         break;
-      default:
+      case 'register':
+        if (!this.state.auth) {
+        return <Register handleRegisterSubmit={this.handleRegisterSubmit} />;
+        } else return <Home />;
+        default:
         break;
     }
   }

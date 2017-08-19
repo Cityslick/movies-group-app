@@ -5,8 +5,7 @@ const movieController = {};
 movieController.index = (req, res) => {
   Movie.findAll()
     .then(movies => {
-      res.render('movies/movie-index', {
-        currentPage: 'index',
+      res.json({
         message: 'ok',
         data: movies,
       });
@@ -19,8 +18,7 @@ movieController.index = (req, res) => {
 movieController.show = (req, res) => {
   Movie.findById(req.params.id)
     .then(movie => {
-      res.render('movies/movie-single', {
-        currentPage: 'show',
+      res.json({
         message: 'ok',
         data: movie,
       });

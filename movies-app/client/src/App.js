@@ -157,6 +157,7 @@ handleRegisterSubmit(e, username, password, email) {
   }
 
   selectEditedMovie(id) {
+    console.log("editing");
     this.setState({
       currentMovieId: id,
     })

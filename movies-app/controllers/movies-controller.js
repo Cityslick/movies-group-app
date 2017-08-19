@@ -31,9 +31,9 @@ movieController.show = (req, res) => {
 movieController.create = (req, res) => {
   Movie.create({
     title: req.body.title,
-    year: req.body.year,
+    description: req.body.description,
     genre: req.body.genre,
-  }, req.user.id).then(() => {
+  }, 1).then(() => {
     res.redirect('/movies');
   }).catch(err => {
     console.log(err);
@@ -44,7 +44,7 @@ movieController.create = (req, res) => {
 movieController.update = (req, res) => {
   Movie.update({
     title: req.body.title,
-    year: req.body.year,
+    description: req.body.description,
     genre: req.body.genre,
   }, req.params.id).then(movie => {
     res.redirect(`/movies/${req.params.id}`);

@@ -35,13 +35,5 @@ authRouter.get('/logout', (req, res) => {
   })
 });
 
-authRouter.get('/register', authHelpers.loginRedirect, (req, res) => {
-  res.render('auth/register', {
-    currentPage: 'register',
-  });
-});
-
-authRouter.post('/register', usersController.create);
-
 
 module.exports = authRouter;

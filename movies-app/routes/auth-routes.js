@@ -2,12 +2,16 @@ const express = require('express');
 const authRouter = express.Router();
 const passport = require('../services/auth/local');
 const authHelpers = require('../services/auth/auth-helpers');
+const usersController = require('../controllers/users-controller');
+
+
+authRouter.post('/', usersController.create);
+
 
 authRouter.post('/login', passport.authenticate('local', {
     successRedirect: '/auth/success',
     failureRedirect: '/auth/failure',
-    failureFlash: true,
-  })
+  }), usersController.index
 )
 
 authRouter.get('/success', (req, res) => {
@@ -34,6 +38,8 @@ authRouter.get('/logout', (req, res) => {
     auth: false,
   })
 });
+
+
 
 
 module.exports = authRouter;

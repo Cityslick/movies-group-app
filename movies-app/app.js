@@ -32,7 +32,7 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) => {
-  res.send('hello world');
+  res.send('Page loaded');
 });
 
 const authRoutes = require('./routes/auth-routes');

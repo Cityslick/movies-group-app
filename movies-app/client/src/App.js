@@ -73,7 +73,8 @@ class App extends Component {
     }
   }
 
-    handleLoginSubmit(e, username, password) {
+
+  handleLoginSubmit(e, username, password) {
     e.preventDefault();
     axios.post('/auth/login', {
       username,
@@ -87,10 +88,10 @@ class App extends Component {
     }).catch(err => console.log(err));
   }
 
-
 handleRegisterSubmit(e, username, password, email) {
+    console.log("Im here");
     e.preventDefault();
-    axios.post('/auth/register', {
+    axios.post('/auth', {
       username,
       password,
       email,

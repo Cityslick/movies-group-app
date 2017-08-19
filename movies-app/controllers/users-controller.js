@@ -4,7 +4,6 @@ const User = require('../models/user.js');
 const usersController = {};
 
 usersController.create = (req, res) => {
-    console.log("Im here in the controller");
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(req.body.password, salt);
     User.create({
@@ -27,6 +26,7 @@ usersController.create = (req, res) => {
 }
 
 usersController.index = (req, res) => {
+    console.log("Im here in the controller");
     User.findUserMovies(req.user.id)
     .then(movies => {
         res.json({

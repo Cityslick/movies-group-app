@@ -11,6 +11,7 @@ init();
 
 passport.use(
   new LocalStrategy(options, (username, password, done) => {
+    passReqToCallback : true;
     User.findByUserName(username)
       .then(user => {
         if (!user) {

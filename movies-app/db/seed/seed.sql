@@ -16,3 +16,20 @@ INSERT INTO movies (title, description, genre) VALUES ('Fear Strikes Out', 'In b
 INSERT INTO movies (title, description, genre) VALUES ('Ballad of the Little Soldier (Ballade vom kleinen Soldaten)', 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.', 'Documentary');
 INSERT INTO movies (title, description, genre) VALUES ('Missionary, The', 'Duis bibendum.', 'Comedy');
 INSERT INTO movies (title, description, genre) VALUES ('Thrashin''', 'Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.', 'Action|Drama');
+
+
+INSERT INTO directors (title, name) VALUES ('Billy Jack Goes to Washington', 'Tom Laughlin');
+INSERT INTO directors (title, name) VALUES ('Wind Will Carry Us, The (Bad ma ra khahad bord)', 'Abbas Kiarostami');
+INSERT INTO directors (title, name) VALUES ('Night in Casablanca, A', 'Archie Mayo'); 
+INSERT INTO directors (title, name) VALUES ('Isi & Disi: Amor a lo bestia', 'Chema de la Pena');
+INSERT INTO directors (title, name) VALUES ('Silent Night, Deadly Night 5: The Toy Maker', 'Martin Kitrosser');
+INSERT INTO directors (title, name) VALUES ('Ordet (Word, The)', 'Carl Theodor Dreyer');
+INSERT INTO directors (title, name) VALUES ('Grouse', 'N/A');
+INSERT INTO directors (title, name) VALUES ('So Close (Chik Yeung Tin Sai)', 'Corey Yuen');
+INSERT INTO directors (title, name) VALUES ('Lincoln Lawyer, The', 'Brad Furman');
+INSERT INTO directors (title, name) VALUES ('White Massai, The (Weisse Massai, Die)', 'Hermine Huntgeburth');
+INSERT INTO directors (title, name) VALUES ('Eye for an Eye, An (Oeil pour oeil) (Eyes of the Sahara)', 'Andre Cayatte');
+INSERT INTO directors (title, name) VALUES ('Fear Strikes Out', 'Robert Mulligan');
+INSERT INTO directors (title, name) VALUES ('Ballad of the Little Soldier (Ballade vom kleinen Soldaten)', 'Werner Herzog');
+INSERT INTO directors (title, name) VALUES ('Missionary, The', 'Richard Loncraine');
+INSERT INTO directors (title, name) VALUES ('Thrashin''', 'David Winters');

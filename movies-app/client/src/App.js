@@ -31,6 +31,7 @@ class App extends Component {
     this.handleMovieSubmit = this.handleMovieSubmit.bind(this);
     this.handleMovieEditSubmit = this.handleMovieEditSubmit.bind(this);
     this.selectEditedMovie = this.selectEditedMovie.bind(this);
+    this.addToFavorites = this.addToFavorites.bind(this);
   }
 
   // PAGINATION
@@ -59,14 +60,17 @@ class App extends Component {
         } else return <Home />;
 
       case 'movies':
-        return (<MoviesList
+        return (
+          <MoviesList
           movieData={this.state.movieData}
           handleMovieSubmit={this.handleMovieSubmit}
           handleMovieEditSubmit={this.handleMovieEditSubmit}
           selectEditedMovie={this.selectEditedMovie}
           current
           MovieId={this.state.currentMovieId}
-          user={this.state.user} />)
+          user={this.state.user}
+          addToFavorites={this.addToFavorites}
+         />)
         break;
 
       default:
@@ -173,6 +177,16 @@ handleRegisterSubmit(e, username, password, email) {
           currentMovieId: null,
         })
       }).catch(err => console.log(err));
+  }
+//Stuck on this function
+  addToFavorites(title, description, genre) {
+    axios.post('/favorites', {
+      title,
+      description,
+      genre,
+    }).then(res => {
+      this.resetMovies();
+    }).catch(err => console.log(err));
   }
 
   // RENDER

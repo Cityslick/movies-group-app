@@ -14,7 +14,7 @@ const MoviesList = (props) => {
       {props.movieData.map(movie => {
         if (props.currentMovieId === movie.id) {
           return <MovieEditForm key={movie.id} movie={movie} handleMovieEditSubmit={props.handleMovieEditSubmit} />
-        } else return <Movie user={props.user} movie={movie} selectEditedMovie={props.selectEditedMovie} key={movie.id} />
+        } else return <Movie user={props.user} movie={movie} selectEditedMovie={props.selectEditedMovie} addToFavorites={props.addToFavorites} key={movie.id} />
       })}
     </div>
   )

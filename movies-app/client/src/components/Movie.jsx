@@ -10,6 +10,10 @@ const Movie = (props) => {
       <span className="edit" onClick={() => props.selectEditedMovie(props.movie.id)}>Edit</span>
       : ''
       }
+        {props.user ?
+      <span className="edit" onClick={() => props.addToFavorites(props.movie)}>Add to Favorites</span>
+      : ''
+      }
     </div>
   )
 }

@@ -127,6 +127,7 @@ class App extends Component {
             title,
             description,
             genre,
+            director,
         }).then(res => {
             this.resetMovies();
         }).catch(err => console.log(err));
@@ -138,6 +139,7 @@ class App extends Component {
             title,
             description,
             genre,
+            director,
         }).then(res => {
             this.resetMovies();
         }).catch(err => console.log(err));

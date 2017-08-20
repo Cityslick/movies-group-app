@@ -1,5 +1,6 @@
 * {
   list-style-type: none;
+  font-family: Gotham, Helvetica, sans-serif;
 }
 
 .notVissible{
@@ -16,7 +17,6 @@
   font-size: 48px;
   font-weight: 800;
   letter-spacing: -0.0em;
-  font-family:  Helvetica, sans-serif;
 }
 
 .header {
@@ -24,22 +24,106 @@
   height: 120px;
   padding: 40px;
   color: white;
-  font-family: Gotham, Helvetica, sans-serif;
 }
 
 .h-btn {
-  padding: 20px 25px 20px 25px;
-  font-size: 30px;
+  padding: 24px 24px 0px 24px;
+  font-size: 20px;
   font-style: uppercase;
   font-weight: 400;
   letter-spacing: .1em;
-  font-family: Gotham, Helvetica, sans-serif;
 }
 
 .h-btn:hover {
   background-color: white;
   color: #F64747;
 }
+
+.form {
+  padding-top: 40px;
+}
+
+/* FORM STYLES */
+.register-form {
+  display: inline-flex;
+}
+
+input[type=text], select {
+  width: 75%;
+  padding: 10px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  /* border-radius: 4px; */
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+input[type=password], select {
+  width: 75%;
+  padding: 10px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  /* border-radius: 4px; */
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+input[type=email], select {
+  width: 75%;
+  padding: 10px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  /* border-radius: 4px; */
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+input[type=submit] {
+  width: 40%;
+  background-color: #544CAF;
+  color: white;
+  padding: 10px 10px;
+  margin: 8px 0;
+  border: none;
+  font-size: 20px;
+  font-weight: 800px;
+  /* border-radius: 0px; */
+  cursor: pointer;
+  transition: all 0.5s ease 0s;
+}
+
+input[type=submit]:hover {
+  background-color: red;
+  box-shadow: inset 0 0 0 0px #211F1F;
+}
+
+/* .footer {
+  position: ;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  background-color: #F64747;
+  text-align: center;
+  color: white;
+} */
+
+.footer {
+  height: 100px;
+  width: 100%;
+  background-color: #F64747;
+  background-image: none;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  position: absolute;
+  padding: 20px;
+  bottom: 0pt;
+  left: 0pt;
+}   
 
 .App-intro {
   font-size: large;
@@ -53,6 +137,21 @@ ul {
   float: left;
 
 }
+
+/* PARALLAX */
+.parallax {
+  /* z-index:  */
+  background-image: url("http://www.saga.co.uk/contentlibrary/saga/publishing/verticals/entertainment/films-and-tv/films-hero-1260x600.jpg");
+  min-height: 1200px; 
+  width: 100%;
+  /* SCROLL */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

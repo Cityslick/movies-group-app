@@ -34,13 +34,11 @@ class App extends Component {
     this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
   }
 
-  // PAGINATION
     setPage(page) {
         this.setState({
             currentPage: page,
         })
     }
-
 
     decideWhichPage() {
         switch(this.state.currentPage) {
@@ -73,7 +71,6 @@ class App extends Component {
         }
     }
 
-
     handleLoginSubmit(e, username, password) {
         e.preventDefault();
         axios.post('/auth/login', {
@@ -104,11 +101,10 @@ class App extends Component {
         }).catch(err => console.log(err));
     }
 
-
     logOut() {
         axios.get('/auth/logout')
         .then(res => {
-            console.log(res);
+            alert("Logout");
             this.setState({
                 auth: false,
                 currentPage: 'home',
@@ -116,79 +112,71 @@ class App extends Component {
         }).catch(err => console.log(err));
     }
 
-
-
-  // LIFECYCLE
-
     componentDidMount() {
     axios.get('/movies')
-      .then(res => {
-        this.setState({
-          movieData: res.data.data,
-        });
-      }).catch(err => console.log(err));
+        .then(res => {
+            this.setState({
+                movieData: res.data.data,
+            });
+        }).catch(err => console.log(err));
     }
 
+    handleMovieSubmit(e, title, description, genre) {
+        e.preventDefault();
+        axios.post('/movies', {
+            title,
+            description,
+            genre,
+        }).then(res => {
+            this.resetMovies();
+        }).catch(err => console.log(err));
+    }
 
-  // MOVIES
+    handleMovieEditSubmit(e, title, description, genre) {
+        e.preventDefault();
+        axios.put(`/movies/${this.state.currentMovieId}`, {
+            title,
+            description,
+            genre,
+        }).then(res => {
+            this.resetMovies();
+        }).catch(err => console.log(err));
+    }
 
-  handleMovieSubmit(e, title, description, genre) {
-    e.preventDefault();
-    axios.post('/movies', {
-      title,
-      description,
-      genre,
-    }).then(res => {
-      this.resetMovies();
-    }).catch(err => console.log(err));
-  }
+    handleDeleteMovie(id) {
+        axios.delete(`/movies/${id}`,{
+            id,
+        }).then(res => {
+            console.log("reset");
+            this.resetMovies();
+        }).catch(err => console.log(err));
+    }
 
-  handleMovieEditSubmit(e, title, description, genre) {
-    e.preventDefault();
-    axios.put(`/movies/${this.state.currentMovieId}`, {
-      title,
-      description,
-      genre,
-    }).then(res => {
-      this.resetMovies();
-    }).catch(err => console.log(err));
-  }
-
-  handleDeleteMovie(id) {
-    axios.delete(`/movies/${id}`,{
-        id,
-    }).then(res => {
-        console.log("reset");
-        this.resetMovies();
-    }).catch(err => console.log(err));
-  }
-
-  selectEditedMovie(id) {
-    this.setState({
-      currentMovieId: id,
-    })
-  }
-
-  resetMovies() {
-    axios.get('/movies')
-      .then(res => {
+    selectEditedMovie(id) {
         this.setState({
-          movieData: res.data.data,
-          currentMovieId: null,
+            currentMovieId: id,
         })
-    }).catch(err => console.log(err));
-  }
+    }
 
-  // RENDER
-  render() {
-    return (
-      <div className="App">
-        <Header setPage={this.setPage} logOut={this.logOut} />
-        {this.decideWhichPage()}
-        <Footer />
-      </div>
-    );
-  }
+    resetMovies() {
+        axios.get('/movies')
+        .then(res => {
+            this.setState({
+                movieData: res.data.data,
+                currentMovieId: null,
+            })
+        }).catch(err => console.log(err));
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <Header setPage={this.setPage} logOut={this.logOut} />
+                {this.decideWhichPage()}
+                <Footer />
+            </div>
+        );
+    }
 }
 
 export default App;

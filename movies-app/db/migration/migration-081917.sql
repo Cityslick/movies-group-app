@@ -14,12 +14,12 @@ CREATE TABLE IF NOT EXISTS movies (
 	description TEXT,
 	genre VARCHAR(255),
 	user_id INT REFERENCES users(id)
-)
+);
 
 CREATE TABLE IF NOT EXISTS directors (
 	id SERIAL PRIMARY KEY,
 	title VARCHAR(255),
 	name VARCHAR(255),
 	movie_id INT REFERENCES movies(id)
-)
+);
 

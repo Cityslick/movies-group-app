@@ -26,12 +26,10 @@ usersController.create = (req, res) => {
 }
 
 usersController.index = (req, res) => {
-    console.log("Im here in the controller");
-    User.findUserMovies(req.user.id)
+    User.findUserMovies(req.params.id || null)
     .then(movies => {
         res.json({
         user: req.user,
-        data: 'Put a user profile on this route',
         movies: movies,
         });
     }).catch(err => {

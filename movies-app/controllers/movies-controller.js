@@ -28,6 +28,19 @@ movieController.show = (req, res) => {
     });
 };
 
+movieController.makeComment = (req, res) => {
+    Movie.createReview(req.params.id)
+    .then(movie => {
+        res.json({
+            message: 'ok',
+            data: movie,
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+};
+
 movieController.create = (req, res) => {
   Movie.create({
     title: req.body.title,

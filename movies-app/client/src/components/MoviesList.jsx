@@ -7,6 +7,7 @@ import MovieEditForm from './MovieEditForm';
 const MoviesList = (props) => {
   return (
     <div className="movies-list">
+        {console.log(props.movieData)}
       <MovieAddForm handleMovieSubmit={props.handleMovieSubmit} />
       {props.movieData.map(movie => {
         if (props.currentMovieId === movie.id) {

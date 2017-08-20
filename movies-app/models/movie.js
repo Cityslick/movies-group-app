@@ -22,6 +22,15 @@ Movie.create = (movie, userid) => {
   `, [movie.title, movie.genre, movie.description, movie.director, userid]);
 }
 
+Movie.createReview = (movie, userid) => {
+  return db.one(`
+    INSERT INTO reviews
+    (comments, userid)
+    VALUES ($1)
+    RETURNING *
+  `, [movie.reviews, userid]);
+}
+
 Movie.update = (movie, id) => {
   return db.one(`
     UPDATE movies SET

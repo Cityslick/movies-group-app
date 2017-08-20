@@ -32,6 +32,7 @@ class App extends Component {
     this.handleMovieEditSubmit = this.handleMovieEditSubmit.bind(this);
     this.selectEditedMovie = this.selectEditedMovie.bind(this);
     this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
   }
 
     setPage(page) {
@@ -60,6 +61,7 @@ class App extends Component {
                 movieData={this.state.movieData}
                 userData={this.state.user}
                 handleMovieSubmit={this.handleMovieSubmit}
+                handleCommentSubmit = {this.handleCommentSubmit}
                 handleMovieEditSubmit={this.handleMovieEditSubmit}
                 selectEditedMovie={this.selectEditedMovie}
                 handleDeleteMovie={this.handleDeleteMovie}
@@ -130,6 +132,15 @@ class App extends Component {
             description,
             genre,
             director,
+        }).then(res => {
+            this.resetMovies();
+        }).catch(err => console.log(err));
+    }
+
+    handleCommentSubmit(e, comments) {
+        e.preventDefault();
+        axios.post('/movies', {
+            comments,
         }).then(res => {
             this.resetMovies();
         }).catch(err => console.log(err));

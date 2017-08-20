@@ -1,9 +1,24 @@
 const Movie = require('../models/movie');
+const Favorites = require('../models/favorites');
+
 
 const movieController = {};
 
 movieController.index = (req, res) => {
   Movie.findAll()
+    .then(movies => {
+      res.json({
+        message: 'ok',
+        data: movies,
+      });
+    }).catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
+};
+
+movieController.favorites = (req, res) => {
+  Favorites.findAll()
     .then(movies => {
       res.json({
         message: 'ok',
@@ -30,6 +45,19 @@ movieController.show = (req, res) => {
 
 movieController.create = (req, res) => {
   Movie.create({
+    title: req.body.title,
+    description: req.body.description,
+    genre: req.body.genre,
+  }, 1).then(() => {
+    res.redirect('/movies');
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+};
+
+movieController.add = (req, res) => {
+  Favorites.create({
     title: req.body.title,
     description: req.body.description,
     genre: req.body.genre,

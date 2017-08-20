@@ -123,23 +123,25 @@ class App extends Component {
         }).catch(err => console.log(err));
     }
 
-    handleMovieSubmit(e, title, description, genre) {
+    handleMovieSubmit(e, title, description, genre, director) {
         e.preventDefault();
         axios.post('/movies', {
             title,
             description,
             genre,
+            director,
         }).then(res => {
             this.resetMovies();
         }).catch(err => console.log(err));
     }
 
-    handleMovieEditSubmit(e, title, description, genre) {
+    handleMovieEditSubmit(e, title, description, genre, director) {
         e.preventDefault();
         axios.put(`/movies/${this.state.currentMovieId}`, {
             title,
             description,
             genre,
+            director,
         }).then(res => {
             this.resetMovies();
         }).catch(err => console.log(err));

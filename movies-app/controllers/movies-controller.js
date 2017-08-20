@@ -52,7 +52,7 @@ movieController.update = (req, res) => {
     }, req.params.id).then(movies => {
         res.json({
             message: 'Movie updated successfully!',
-            data: movie,
+            data: movies,
         });
     }).catch(err => {
         console.log(err);

@@ -41,6 +41,9 @@ app.use('/auth', authRoutes);
 const movieRoutes = require('./routes/movie-routes');
 app.use('/movies', movieRoutes);
 
+const favoritesRoutes = require('./routes/favorites-routes');
+app.use('/favorites', favoritesRoutes);
+
 app.use('*', (req, res) => {
   res.status(400).json({
     message: 'Not found!',

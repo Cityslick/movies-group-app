@@ -3,7 +3,7 @@ import React from 'react';
 const Header = (props) => {
   return (
       <header className="header">
-        <div className="logo">Awesome Movie App</div>
+        <div className="logo">MovieFinder</div>
         <nav>
           <ul>
             <li className="h-btn" onClick={() => props.setPage('home')}>Home</li>

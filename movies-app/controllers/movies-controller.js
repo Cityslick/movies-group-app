@@ -35,7 +35,7 @@ movieController.create = (req, res) => {
         genre: req.body.genre,
     }, req.user.id).then((movie) => {
         res.json({
-            message: 'Movie updated successfully!',
+            message: 'ok',
             data: movie,
         });
     }).catch(err => {
@@ -51,7 +51,7 @@ movieController.update = (req, res) => {
         genre: req.body.genre,
     }, req.params.id).then(movies => {
         res.json({
-            message: 'Movie updated successfully!',
+            message: 'ok',
             data: movies,
         });
     }).catch(err => {
@@ -71,6 +71,5 @@ movieController.delete = (req, res) => {
         res.status(500).json(err);
     });
 }
-
 
 module.exports = movieController;

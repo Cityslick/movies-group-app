@@ -7,7 +7,7 @@ const Movie = (props) => {
 			<p>Director: {props.movie.director}</p>
 	  		<p>{props.movie.description}</p>
 	  		<p>Genre: {props.movie.genre}</p>
-	  		<span className="edit"    onClick={() => props.selectEditedMovie(props.movie.id)}>Edit</span><br/>
+	  		<span className="edit"   onClick={() => props.selectEditedMovie(props.movie.id)}>Edit</span><br/>
 	  		<span className="delete" onClick={() => props.handleDeleteMovie(props.movie.id)}>Delete</span>
 		</div>
 	)

@@ -33,8 +33,11 @@ movieController.create = (req, res) => {
     title: req.body.title,
     description: req.body.description,
     genre: req.body.genre,
-  }, req.user.id).then(() => {
-    res.redirect('/movies');
+  }, req.user.id).then((movie) => {
+  res.json({
+      message: 'Movie updated successfully!',
+      data: movie,
+    });
   }).catch(err => {
     console.log(err);
     res.status(500).json(err);
@@ -46,35 +49,28 @@ movieController.update = (req, res) => {
     title: req.body.title,
     description: req.body.description,
     genre: req.body.genre,
-  }, req.params.id).then(movie => {
-    res.redirect(`/movies/${req.params.id}`);
+  }, req.params.id).then(movies => {
+      res.json({
+      message: 'Movie updated successfully!',
+      data: movie,
+    });
   }).catch(err => {
     console.log(err);
     res.status(500).json(err);
   });
 };
 
-movieController.edit = (req, res) => {
-  Movie.findById(req.params.id)
-    .then(movie => {
-      res.render('movies/movie-single-edit', {
-        currentPage: 'edit',
-        data: movie,
+movieController.delete = (req, res) => {
+  Movie.destroy(req.params.id)
+    .then(() => {
+      res.json({
+        message: 'ok',
       });
     }).catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
-};
+}
 
-movieController.delete = (req, res) => {
-  Movie.destroy(req.params.id)
-    .then(() => {
-      res.redirect('/movies');
-    }).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-};
 
 module.exports = movieController;

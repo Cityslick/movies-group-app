@@ -31,11 +31,11 @@ class App extends Component {
     this.handleMovieSubmit = this.handleMovieSubmit.bind(this);
     this.handleMovieEditSubmit = this.handleMovieEditSubmit.bind(this);
     this.selectEditedMovie = this.selectEditedMovie.bind(this);
+    this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
   }
 
   // PAGINATION
     setPage(page) {
-        console.log('click');
         this.setState({
             currentPage: page,
         })
@@ -54,18 +54,19 @@ class App extends Component {
                 break;
           case 'register':
             if (!this.state.auth) {
-            return <Register handleRegisterSubmit={this.handleRegisterSubmit} />;
+                return <Register handleRegisterSubmit={this.handleRegisterSubmit} />;
             } else return <Home />;
 
           case 'movies':
             return (<MoviesList
-              movieData={this.state.movieData}
-              handleMovieSubmit={this.handleMovieSubmit}
-              handleMovieEditSubmit={this.handleMovieEditSubmit}
-              selectEditedMovie={this.selectEditedMovie}
-              current
-              MovieId={this.state.currentMovieId}  />)
+                movieData={this.state.movieData}
+                handleMovieSubmit={this.handleMovieSubmit}
+                handleMovieEditSubmit={this.handleMovieEditSubmit}
+                selectEditedMovie={this.selectEditedMovie}
+                handleDeleteMovie={this.handleDeleteMovie}
+                currentMovieId={this.state.currentMovieId}  />)
             break;
+
 
           default:
             break;
@@ -75,16 +76,15 @@ class App extends Component {
 
     handleLoginSubmit(e, username, password) {
         e.preventDefault();
-        console.log(username,password)
         axios.post('/auth/login', {
-          username,
-          password,
+            username,
+            password,
         }).then(res => {
-          this.setState({
-            auth: res.data.auth,
-            user: res.data.user,
-            currentPage: 'home',
-          });
+            this.setState({
+                auth: res.data.auth,
+                user: res.data.user,
+                currentPage: 'home',
+            });
         }).catch(err => console.log(err));
      }
 
@@ -92,30 +92,29 @@ class App extends Component {
         console.log("Im here");
         e.preventDefault();
         axios.post('/auth', {
-          username,
-          password,
-          email,
+            username,
+            password,
+            email,
         }).then(res => {
-          this.setState({
-            auth: res.data.auth,
-            user: res.data.user,
-            currentPage: 'home',
-          });
+            this.setState({
+                auth: res.data.auth,
+                user: res.data.user,
+                currentPage: 'home',
+            });
         }).catch(err => console.log(err));
     }
 
 
     logOut() {
         axios.get('/auth/logout')
-          .then(res => {
+        .then(res => {
             console.log(res);
             this.setState({
-              auth: false,
-              currentPage: 'home',
+                auth: false,
+                currentPage: 'home',
             });
         }).catch(err => console.log(err));
     }
-
 
 
 
@@ -129,7 +128,6 @@ class App extends Component {
         });
       }).catch(err => console.log(err));
     }
-
 
 
   // MOVIES
@@ -156,8 +154,16 @@ class App extends Component {
     }).catch(err => console.log(err));
   }
 
+  handleDeleteMovie(id) {
+    axios.delete(`/movies/${id}`,{
+        id,
+    }).then(res => {
+        console.log("reset");
+        this.resetMovies();
+    }).catch(err => console.log(err));
+  }
+
   selectEditedMovie(id) {
-    console.log("editing");
     this.setState({
       currentMovieId: id,
     })

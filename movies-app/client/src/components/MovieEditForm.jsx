@@ -7,6 +7,7 @@ class MovieEditForm extends Component {
       title: this.props.movie.title,
       desc: this.props.movie.description,
       genre: this.props.movie.genre,
+      director: this.props.movie.director,
     }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -22,7 +23,7 @@ class MovieEditForm extends Component {
   render() {
     return (
       <div className="add">
-        <form onSubmit={(e) => this.props.handleMovieEditSubmit(e, this.state.title, this.state.desc, this.state.genre)}>
+        <form onSubmit={(e) => this.props.handleMovieEditSubmit(e, this.state.title, this.state.desc, this.state.genre, this.state.director)}>
           <label> Title
             <input type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.handleInputChange} />
           </label>
@@ -31,6 +32,9 @@ class MovieEditForm extends Component {
           </label>
           <label> Genre
             <input type="text" name="genre" placeholder="Genre" value={this.state.genre} onChange={this.handleInputChange} />
+          </label>
+          <label> Director
+            <input type="text" name="director" placeholder="Director" value={this.state.director} onChange={this.handleInputChange} />
           </label>
           <input type="submit" value="Add Movie" />
         </form>

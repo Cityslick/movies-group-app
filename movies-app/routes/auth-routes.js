@@ -6,20 +6,21 @@ const usersController = require('../controllers/users-controller');
 
 
 authRouter.post('/', usersController.create);
-
+authRouter.get('/movies', usersController.index);
 
 authRouter.post('/login', passport.authenticate('local', {
     successRedirect: '/auth/success',
     failureRedirect: '/auth/failure',
-  }), usersController.index
-)
+    failureFlash: "true"
+  })
+);
 
 authRouter.get('/success', (req, res) => {
-  res.json({
-    auth: true,
-    message: 'ok',
-    user: req.user,
-  });
+    res.json({
+      auth: true,
+      message: 'ok',
+      user: req.user,
+    });
 });
 
 authRouter.get('/failure', (req, res) => {

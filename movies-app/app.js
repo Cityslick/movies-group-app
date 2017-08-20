@@ -1,10 +1,10 @@
-const express = require('express');
-const logger = require('morgan');
-const path = require('path');
-const bodyParser = require('body-parser');
+const express      = require('express');
+const logger       = require('morgan');
+const path         = require('path');
+const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const passport = require('passport');
+const session      = require('express-session');
+const passport     = require('passport');
 
 const app = express();
 require('dotenv').config();
@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
   res.send('Page loaded');
 });
 
-const authRoutes = require('./routes/auth-routes');
+const authRoutes  = require('./routes/auth-routes');
 app.use('/auth', authRoutes);
 
 const movieRoutes = require('./routes/movie-routes');

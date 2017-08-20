@@ -18,4 +18,9 @@ User.create = user => {
   `, [user.username, user.email, user.password_digest]);
 };
 
+User.findUserMovies = (user_id) => {
+  return db.query('SELECT * FROM movies where user_id=$1',[user_id]);
+}
+
+
 module.exports = User;

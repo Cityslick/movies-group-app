@@ -63,6 +63,7 @@ class App extends Component {
                 handleMovieEditSubmit={this.handleMovieEditSubmit}
                 selectEditedMovie={this.selectEditedMovie}
                 handleDeleteMovie={this.handleDeleteMovie}
+                userData={this.state.user}
                 currentMovieId={this.state.currentMovieId}  />)
             break;
 
@@ -111,6 +112,7 @@ class App extends Component {
             this.setState({
                 auth: false,
                 currentPage: 'home',
+                user:null,
             });
         }).catch(err => console.log(err));
     }

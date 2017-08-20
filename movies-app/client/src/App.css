@@ -2,6 +2,10 @@
   list-style-type: none;
 }
 
+.notVissible{
+  visibility: hidden;
+}
+
 .App {
   text-align: center;
 }

@@ -37,3 +37,7 @@ INSERT INTO directors (title, director) VALUES ('Thrashin''', 'David Winters');
 UPDATE movies SET director = directors.director
 FROM directors
 WHERE movies.title = directors.title;
+
+UPDATE movies SET reviews = reviews.comments
+FROM reviews
+WHERE reviews.movieid = movies.id;

@@ -58,6 +58,7 @@ class App extends Component {
           case 'movies':
             return (<MoviesList
                 movieData={this.state.movieData}
+                userData={this.state.user}
                 handleMovieSubmit={this.handleMovieSubmit}
                 handleMovieEditSubmit={this.handleMovieEditSubmit}
                 selectEditedMovie={this.selectEditedMovie}
@@ -77,6 +78,7 @@ class App extends Component {
             username,
             password,
         }).then(res => {
+            console.log(res.data.user);
             this.setState({
                 auth: res.data.auth,
                 user: res.data.user,

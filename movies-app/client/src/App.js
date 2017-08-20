@@ -65,7 +65,8 @@ class App extends Component {
           handleMovieEditSubmit={this.handleMovieEditSubmit}
           selectEditedMovie={this.selectEditedMovie}
           current
-          MovieId={this.state.currentMovieId}  />)
+          MovieId={this.state.currentMovieId}
+          user={this.state.user} />)
         break;
 
       default:
@@ -179,7 +180,7 @@ handleRegisterSubmit(e, username, password, email) {
   render() {
     return (
       <div className="App">
-        <Header setPage={this.setPage} logOut={this.logOut} />
+        <Header user={this.state.user} setPage={this.setPage} logOut={this.logOut} />
         {this.decideWhichPage()}
         <Footer />
       </div>

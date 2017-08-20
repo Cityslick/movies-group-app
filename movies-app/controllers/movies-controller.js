@@ -33,7 +33,7 @@ movieController.create = (req, res) => {
     title: req.body.title,
     description: req.body.description,
     genre: req.body.genre,
-  }, 1).then(() => {
+  }, req.user.id).then(() => {
     res.redirect('/movies');
   }).catch(err => {
     console.log(err);

@@ -3,7 +3,6 @@ const db = require('../db/config');
 const Movie = {};
 
 Movie.findAll = () => {
-  console.log("Im here in the model");
   return db.query('SELECT * FROM movies m');
 }
 

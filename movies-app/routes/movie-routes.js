@@ -6,7 +6,7 @@ const moviesController = require('../controllers/movies-controller');
 
 movieRoutes.get('/', moviesController.index);
 movieRoutes.post('/', moviesController.create);
-movieRoutes.post('/', moviesController.makeComment);
+movieRoutes.post('/:id', moviesController.createReview);
 movieRoutes.get('/:id', moviesController.show);
 movieRoutes.put('/:id', moviesController.update);
 movieRoutes.delete('/:id', moviesController.delete);

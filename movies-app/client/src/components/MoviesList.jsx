@@ -16,8 +16,8 @@ const MoviesList = (props) => {
             <th>Director</th>
             <th>Description</th>
             <th>Genre</th>
-            <th>DELE</th>
-            <th></th>
+            <th>_______</th>
+            <th>_______</th>
           </tr>
         </thead>
         <tbody>

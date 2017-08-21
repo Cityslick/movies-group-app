@@ -27,6 +27,7 @@ class Register extends Component {
                     <input className="form" type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleInputChange} />
                     <input className="form" type="email" name="email" value={this.state.email} placeholder="email" onChange={this.handleInputChange} />
                     <input className="form" type="submit" value="Submit" />
+                    <i class="fa fa-check" aria-hidden="true"></i>
                 </form>
             </div>
         )

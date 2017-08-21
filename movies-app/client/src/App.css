@@ -143,7 +143,6 @@ ul {
 
 /* PARALLAX */
 .parallax {
-  /* z-index:  */
   background-image: url("http://www.saga.co.uk/contentlibrary/saga/publishing/verticals/entertainment/films-and-tv/films-hero-1260x600.jpg");
   min-height: 1200px; 
   width: 100%;
@@ -164,7 +163,7 @@ table {
     border-collapse: collapse;
     width: 100%;
     background-color: rgba(255,255,153,0.5);
-}
+  }
 }
 
 td, th {

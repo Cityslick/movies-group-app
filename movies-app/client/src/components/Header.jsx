@@ -3,6 +3,7 @@ import React from 'react';
 const Header = (props) => {
   return (
       <header className="header">
+
         <div className="logo">MovieFinder</div>
         <nav>
           <ul>

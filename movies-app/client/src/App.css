@@ -1,13 +1,3 @@
-* {
-  list-style-type: none;
-}
-
-.button{
-  border: 2px solid black
-}
-.notVissible{
-  visibility: hidden;
-}
 
 .App {
   text-align: center;
@@ -84,7 +74,7 @@ td,tr{
 }
 
 .tdDescription{
-  width:40%;
+  width:30%;
 }
 
 /*change the color of each row depending if its odd or even*/
@@ -101,3 +91,20 @@ tr:nth-child(even) {
     width: 100px;
 }
 
+textarea, input ,h3{
+    background-color: white;
+    border: 1px solid silver;
+    color: black;
+    font-size: 1em;
+}
+
+* {
+  list-style-type: none;
+}
+
+.button{
+  border: 2px solid black
+}
+.notVissible{
+  visibility: hidden;
+}

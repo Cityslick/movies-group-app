@@ -8,7 +8,7 @@ const Movie = (props) => {
 	}
 	return (
 		<tr className="movie">
-	  		<td>{props.movie.title}</td>
+	  		<td className={"tdDescription"}>{props.movie.title}</td>
 			<td className={"tdDescription"}>{props.movie.director}</td>
 	  		<td className={"tdDescription"}>{props.movie.description}</td>
 	  		<td>{props.movie.genre}</td>

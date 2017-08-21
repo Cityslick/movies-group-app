@@ -12,7 +12,7 @@ const Movie = (props) => {
 			<td className={"tdDescription"}>{props.movie.director}</td>
 	  		<td className={"tdDescription"}>{props.movie.description}</td>
 	  		<td>{props.movie.genre}</td>
-	  		<td><span className={`button ${!showOption ? 'notVissible': ''}`}   onClick={() => props.selectEditedMovie(props.movie.id)}>Edit</span></td><br/>
+	  		<td><span className={`button ${!showOption ? 'notVissible': ''}`}   onClick={() => props.selectEditedMovie(props.movie.id)}>Edit</span></td>
 	  		<td><span className={`button ${!showOption ? 'notVissible': ''}`} onClick={() => props.handleDeleteMovie(props.movie.id)}>Delete</span></td>
 		</tr>
 	)

@@ -22,21 +22,26 @@ class MovieEditForm extends Component {
 
   render() {
     return (
-      <div className="add">
+      <div className="edit">
         <form onSubmit={(e) => this.props.handleMovieEditSubmit(e, this.state.title, this.state.desc, this.state.genre, this.state.director)}>
-          <td> Title
-            <input type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.handleInputChange} />
+
+          <td className="movie">
+              <label> Title
+                <input type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.handleInputChange} />
+              </label>
+              <label> Description
+                <input type="text" name="desc" placeholder="Description" value={this.state.desc} onChange={this.handleInputChange} />
+              </label>
+              <label> Genre
+                <input type="text" name="genre" placeholder="Genre" value={this.state.genre} onChange={this.handleInputChange} />
+              </label>
+              <label> Director
+                <input type="text" name="director" placeholder="Director" value={this.state.director} onChange={this.handleInputChange} />
+              </label>
+
           </td>
-          <td  className={"tdDescription"}> Description
-            <input type="text" name="desc" placeholder="Description" value={this.state.desc} onChange={this.handleInputChange} />
-          </td>
-          <td> Genre
-            <input type="text" name="genre" placeholder="Genre" value={this.state.genre} onChange={this.handleInputChange} />
-          </td>
-          <td  className={"tdDescription"}> Director
-            <input type="text" name="director" placeholder="Director" value={this.state.director} onChange={this.handleInputChange} />
-          </td>
-          <input type="submit" value="Add Movie" />
+
+          <input type="submit" value="Update Movie" />
         </form>
       </div>
     )

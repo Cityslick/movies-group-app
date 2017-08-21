@@ -9,15 +9,20 @@ class MovieAddForm extends Component {
       genre: '',
       director: '',
     }
-    this.handleInputChange = this.handleInputChange.bind(this);  
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.clearInputs= this.clearInputs.bind(this);
   }
 
   handleInputChange(e) {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({
-      [name]: value, 
+      [name]: value,
     });
+  }
+
+  clearInputs(){
+      document.getElementById("title").values="";
   }
 
   render(){

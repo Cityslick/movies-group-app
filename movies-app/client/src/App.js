@@ -89,7 +89,7 @@ class App extends Component {
 
 
     handleRegisterSubmit(e, username, password, email) {
-        console.log("Im here");
+        console.log(e);
         e.preventDefault();
         axios.post('/auth', {
             username,
